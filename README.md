@@ -123,11 +123,11 @@ You can also call each module directly:
   "weather": "rain",
   "urgency_mix": "express",
   "fleet_health_index": 0.9,
-  "date": "2026-04-29",
   "origin": "Hub-A",
   "destination": "Region-Cluster-1",
   "traffic_level": "medium",
   "vehicle_type": "diesel_van",
+  "route_distance_km": 26.0,
   "tool_retries": 1,
   "tool_timeout_s": 3.0
 }
@@ -135,6 +135,22 @@ You can also call each module directly:
 
 Required fields: `region`, `demand_index`, `weather`, `urgency_mix`, `fleet_health_index`.
 Other fields have sensible defaults.
+
+### `/scenario/simulate` payload
+
+```json
+{
+  "start": "Paya Lebar, Singapore",
+  "destination": "Jurong East, Singapore",
+  "vehicle_type": "van"
+}
+```
+
+Response includes:
+- map/fallback distance and traffic-aware time
+- weather mapping (`clear` / `rain` / `storm`)
+- estimated `demand_index` and `fleet_health_index` with explainability
+- `suggested_payload` for direct use in `/agents/control*`
 
 ### `/agents/tool-call` payload (ToolCallRequest)
 
@@ -154,4 +170,7 @@ Other fields have sensible defaults.
 - Dependencies are pinned for LangGraph/LangChain compatibility in `backend/requirements.txt`.
 - This prototype does not require external LLM/API credentials (the tool logic is deterministic/mocked).
 - If you have conflicting LangChain packages in your global Python env, use the project `.venv` to avoid resolver conflicts.
-- To use `/scenario/simulate`, set `GOOGLE_MAPS_API_KEY` in your environment.
+- `/scenario/simulate` supports two modes:
+  - live mode with `GOOGLE_MAPS_API_KEY` (Google APIs)
+  - fallback mode without key (offline-safe heuristic estimates)
+- For Streamlit Cloud deployment, keep a root-level `requirements.txt` (already included).
