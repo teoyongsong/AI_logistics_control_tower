@@ -4,3 +4,5 @@ flask
 gunicorn
 fastapi
 uvicorn
+pydantic==2.10.6
+langgraph==0.3.34
