@@ -2,3 +2,5 @@ streamlit==1.40.2
 cffi==1.17.1
 flask
 gunicorn
+fastapi
+uvicorn
