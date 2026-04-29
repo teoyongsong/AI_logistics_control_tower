@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from urllib import error, parse, request
 
@@ -88,7 +89,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-api_base = st.sidebar.text_input("FastAPI Base URL", value="http://127.0.0.1:8000")
+DEPLOY_API_BASE = "https://ai-logistics-control-tower-aeky.onrender.com"
+default_api_base = os.getenv("API_BASE_URL", DEPLOY_API_BASE)
+api_base = st.sidebar.text_input("FastAPI Base URL", value=default_api_base)
+if "localhost" in api_base or "127.0.0.1" in api_base:
+    st.sidebar.warning("Localhost URL detected. Using deployed backend URL instead.")
+    api_base = DEPLOY_API_BASE
 endpoint_mode = st.sidebar.selectbox("Mode", options=["sync", "async", "replay"], index=0)
 view_mode = st.sidebar.selectbox("View", options=["Classic Simulator", "10 Challenges Demo"], index=1)
 show_raw_output = st.sidebar.toggle("Show existing raw JSON output", value=False)
@@ -209,6 +215,11 @@ if st.button("Create Scenario (Google Maps + Weather Forecast)"):
         detail = http_err.read().decode("utf-8", errors="ignore")
         st.error(f"Scenario simulation API error: {http_err.code}")
         st.code(detail)
+    except error.URLError as url_err:
+        st.error(
+            f"Scenario simulation request failed: {url_err}. "
+            f"Check 'FastAPI Base URL' (current: {api_base})."
+        )
     except Exception as exc:
         st.error(f"Scenario simulation request failed: {exc}")
 
@@ -245,6 +256,11 @@ def render_eval_metrics_panel(api_base: str) -> None:
         detail = http_err.read().decode("utf-8", errors="ignore")
         st.error(f"Eval metrics API error: {http_err.code}")
         st.code(detail)
+    except error.URLError as url_err:
+        st.error(
+            f"Eval metrics request failed: {url_err}. "
+            f"Check 'FastAPI Base URL' (current: {api_base})."
+        )
     except Exception as exc:
         st.error(f"Eval metrics request failed: {exc}")
 
@@ -392,6 +408,11 @@ def render_customer_service_chat(api_base: str) -> None:
     except error.HTTPError as http_err:
         detail = http_err.read().decode("utf-8", errors="ignore")
         full_answer = f"API error: {http_err.code}\n{detail}"
+    except error.URLError as url_err:
+        full_answer = (
+            f"Request failed: {url_err}\n"
+            f"Please verify FastAPI Base URL is reachable: {api_base}"
+        )
     except Exception as exc:
         full_answer = f"Request failed: {exc}"
 
@@ -674,6 +695,11 @@ if submitted:
         detail = http_err.read().decode("utf-8", errors="ignore")
         st.error(f"API error: {http_err.code}")
         st.code(detail)
+    except error.URLError as url_err:
+        st.error(
+            f"Request failed: {url_err}. "
+            f"Please verify 'FastAPI Base URL' is reachable: {api_base}"
+        )
     except Exception as exc:
         st.error(f"Request failed: {exc}")
 
