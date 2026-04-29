@@ -11,3 +11,23 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Logs and local runtime output
+*.log
+
+# Coverage / build artifacts
+.coverage
+htmlcov/
+dist/
+build/
+
+# Temporary generated files
+.user_manual_tmp.html
+USER_MANUAL_md
+USER_MANUAL.pdf

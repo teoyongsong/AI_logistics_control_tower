@@ -2,6 +2,7 @@ fastapi==0.115.5
 uvicorn==0.32.1
 pydantic==2.10.6
 streamlit==1.40.2
+cffi==1.17.1
 
 # Keep LangGraph on the 0.3 line to stay compatible with LangChain 0.3.x.
 langgraph==0.3.34

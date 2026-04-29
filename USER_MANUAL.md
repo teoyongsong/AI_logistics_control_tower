@@ -193,3 +193,56 @@ Repeats **Dispatch Buffer**, **Final Price**, **Failure Probability**, **Agent N
 ---
 
 For onboarding, **change one input at a time** and compare the **plan** metrics (section 5) before diving into every challenge tab.
+
+---
+
+## 10) Demo Script (3 minutes)
+
+Use this as a standard talk track for judges/stakeholders.
+
+### 0:00 - 0:30 | Set context
+
+1. Open the simulator and point to:
+   - **Mode** selector
+   - **View** selector
+   - **Agents/Tools** overview
+2. Say:
+   - "This is a multi-agent logistics control tower prototype covering demand, route, warehouse, maintenance, fraud, customer service, pricing, failure risk, and carbon optimization."
+
+### 0:30 - 1:20 | Create realistic scenario
+
+1. In **Real-life Scenario Builder**:
+   - Set **Collection Point (Start)** and **Delivery Point (Destination)**
+   - Select **Scenario Vehicle Type** (`van` or `motorcycle`)
+   - Click **Create Scenario (Google Maps + Weather Forecast)**
+2. Highlight generated summary:
+   - distance / travel time / traffic / weather
+   - fallback note if key is not configured
+3. Say:
+   - "We auto-generate route and context signals, then estimate Demand Index and Fleet Health Index with explainability."
+
+### 1:20 - 2:20 | Run orchestration and show business outputs
+
+1. Click **Run Simulation** (prefer `replay` mode for explainability demo).
+2. In top metrics, call out:
+   - **ETA**, **Price Quote**, **Failure Probability**, **CO2**
+   - **KPI deltas** vs baseline
+3. Open tabs quickly:
+   - **Route** (distance alignment and ETA)
+   - **Fraud** (probability + decision)
+   - **Carbon** (saving vs diesel)
+4. Say:
+   - "Each challenge now provides plain-language explainability and technical breakdowns."
+
+### 2:20 - 2:50 | Customer service AI chat
+
+1. Go to **Challenge 6: RAG Customer Service**.
+2. Ask one live question in the chat box (e.g., delivery ETA or claim process).
+3. Say:
+   - "The support assistant returns retrieval-grounded responses and indicates escalation when confidence is low."
+
+### 2:50 - 3:00 | Close
+
+1. Show **Eval Metrics** panel (if enabled in sidebar).
+2. Say:
+   - "The solution combines operational KPIs, agent orchestration, and transparent explainability with an evaluation endpoint for auditability."
