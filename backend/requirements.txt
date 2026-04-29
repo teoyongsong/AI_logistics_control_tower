@@ -1,9 +1,2 @@
-fastapi==0.115.5
-uvicorn==0.32.1
-pydantic==2.10.6
+# Streamlit app dependencies only (deployment-safe).
 streamlit==1.40.2
-cffi==1.17.1
-
-# Optional multi-agent/LLM stack is kept in
-# `requirements-optional-llm.txt` to keep Streamlit Cloud installer
-# stable and lightweight.

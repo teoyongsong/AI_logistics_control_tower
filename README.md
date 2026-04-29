@@ -49,6 +49,12 @@ If you also need the optional multi-agent + LLM/RAG package set, install:
 pip install -r backend/requirements-optional-llm.txt
 ```
 
+For API-only installs (without dev tooling), use:
+
+```bash
+pip install -r backend/requirements-api.txt
+```
+
 ## Run the API
 
 ```bash
