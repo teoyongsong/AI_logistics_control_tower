@@ -4,11 +4,8 @@ pydantic==2.10.6
 streamlit==1.40.2
 cffi==1.17.1
 
-# Keep LangGraph on the 0.3 line to stay compatible with LangChain 0.3.x.
+# Keep LangGraph for multi-agent graph orchestration.
 langgraph==0.3.34
-langchain-core==0.3.84
-langchain==0.3.20
-langchain-community==0.3.19
-langchain-openai==0.2.14
-langchain-chroma==0.2.2
-langchain-text-splitters==0.3.11
+
+# Optional LLM/RAG stack is kept in `requirements-optional-llm.txt`
+# to keep Streamlit Cloud installer stable and lightweight.
