@@ -4,8 +4,6 @@ pydantic==2.10.6
 streamlit==1.40.2
 cffi==1.17.1
 
-# Keep LangGraph for multi-agent graph orchestration.
-langgraph==0.3.34
-
-# Optional LLM/RAG stack is kept in `requirements-optional-llm.txt`
-# to keep Streamlit Cloud installer stable and lightweight.
+# Optional multi-agent/LLM stack is kept in
+# `requirements-optional-llm.txt` to keep Streamlit Cloud installer
+# stable and lightweight.

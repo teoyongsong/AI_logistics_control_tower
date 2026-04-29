@@ -43,7 +43,7 @@ source .venv/bin/activate
 pip install -r backend/requirements-dev.txt
 ```
 
-If you also need the optional LLM/RAG package set, install:
+If you also need the optional multi-agent + LLM/RAG package set, install:
 
 ```bash
 pip install -r backend/requirements-optional-llm.txt
