@@ -690,7 +690,11 @@ if submitted:
         result = fetch_json(url=url, method="POST", payload=payload)
         st.session_state["latest_simulation_result"] = result
         st.session_state["latest_simulation_mode"] = endpoint_mode
-        st.success(result.get("status", "ok"))
+        status_text = str(result.get("status", "ok"))
+        if status_text.lower() == "error":
+            st.error(result.get("message", "Simulation returned an error."))
+        else:
+            st.success(status_text)
     except error.HTTPError as http_err:
         detail = http_err.read().decode("utf-8", errors="ignore")
         st.error(f"API error: {http_err.code}")
