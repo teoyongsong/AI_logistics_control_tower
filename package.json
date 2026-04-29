@@ -1,0 +1,13 @@
+{
+  "name": "ninjavan",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run blockchain/scripts/deploy_contracts.js --network mumbai"
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0"
+  }
+}
